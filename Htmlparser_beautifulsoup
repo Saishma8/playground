@@ -6,7 +6,9 @@ page = raw_input("Enter page:")
 html = urllib.urlopen(page).read()
 soup = BeautifulSoup(html)
 
-tags = soup('a')
-
+tags = soup('span') #look for anchor tags
+sum = 0
 for i in tags:
-    print i.get('href',None)
+    sum = sum + int(i.contents[0])
+
+print sum
